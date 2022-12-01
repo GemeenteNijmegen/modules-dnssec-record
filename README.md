@@ -1,22 +1,33 @@
-# AWS Apigateway HTTP helpers
+# CDK custom resource for DNSSEC
 
-A package useful when developing serverless functions using AWS Lambda/Apigateway. It contains:
+This package contains a custom resource that will add the DS record to AWS Route53 based on the provied KeySigningKey name.
 
-## V2/Response
-A response object with several methods for common http responses. Return these from your lambda handler:
 
-```
-import { Response } from @gemeentenijmegen/apigateway-http/lib/V2/Response;
+## Example
+The example below demonstrates how to setup DNSSEC using CDK and how this package can be used to create the DS record in a single deployment. 
 
-// Redirect to https://example.com
-Response.redirect('https://example.com');
+```typescript
+setupDNSSEC(hostedZone: Route53.IHostedZone, parentHostedZone: Route53.IHostedZone) {
 
-// Permanently redirect to https://example.com
-Response.redirect('https://example.com', 301);
+  const ksk = new Route53.CfnKeySigningKey(this, 'dnssec-ksk', {
+    name: 'ksk_name',
+    status: 'ACTIVE',
+    hostedZoneId: hostedZone.hostedZoneId,
+    keyManagementServiceArn: kmsKeyArn,
+  });
 
-// Return http 403: Not allowed response
-Response.error(403);
+  const dnssec = new Route53.CfnDNSSEC(this, 'dnssec', {
+    hostedZoneId: hostedZone.hostedZoneId,
+  });
+  dnssec.node.addDependency(ksk);
 
-// Return a html page
-Response.html('<!doctype html><html><head><title>My page</title></head><body>The html body</body></html>');
+  // Add the DS record using the struct provided by this package
+  const dnssecRecord = new DnssecRecordStruct(this, 'dnssec-record', {
+    keySigningKey: dnssecKeySigning,
+    hostedZone: hostedZone,
+    parentHostedZone: parentHostedZone,
+  });
+  dnssecRecord.node.addDependency(dnssec);
+
+}
 ```
