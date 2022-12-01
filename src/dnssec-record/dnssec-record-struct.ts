@@ -35,15 +35,24 @@ export class DnssecRecordStruct extends Construct {
       resources: ['*'],
     }));
 
-    // Allow obtaining info of DNSSEC and UPSERTING records
+    // Allow obtaining info of DNSSEC on hosted zone
     lambda.addToRolePolicy(new iam.PolicyStatement({
       effect: iam.Effect.ALLOW,
       actions: [
         'route53:GetDNSSEC',
-        'route53:ChangeResourceRecordSets',
       ],
       resources: [
         props.hostedZone.hostedZoneArn,
+      ],
+    }));
+
+    // Allow UPSERTING records on parent hosted zone
+    lambda.addToRolePolicy(new iam.PolicyStatement({
+      effect: iam.Effect.ALLOW,
+      actions: [
+        'route53:ChangeResourceRecordSets',
+      ],
+      resources: [
         props.parentHostedZone.hostedZoneArn,
       ],
     }));
