@@ -38,14 +38,18 @@ async function onCreateUpdate(
   try {
 
     const dsRecordValue = await util.getDsRecordValue(hostedZoneId, keySigningKeyName);
+    console.info("Obtained DS record value", dsRecordValue);
     const changeId = await util.createDsRecord(parentHostedZoneId, hostedZoneName, dsRecordValue);
+    console.info("UPSERT DS record succesfull, change ID is", changeId);
     const successful = await util.waitForChange(changeId, 2, 3000);
 
     if (successful) {
+      console.info("Record is INSYNC")
       return response('SUCCESS', event);
     }
 
-    return response('SUCCESS', event, 'Added DS record however change stats is not yet INSYNC');
+    console.info("Record is not yet INSYNC... stopping lambda");
+    return response('SUCCESS', event, "Added DS record however change stats is not yet INSYNC");
 
   } catch (error) {
     console.error(error);
