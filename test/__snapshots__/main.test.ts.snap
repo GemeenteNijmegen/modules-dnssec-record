@@ -185,37 +185,36 @@ Object {
               "Resource": "*",
             },
             Object {
-              "Action": Array [
-                "route53:GetDNSSEC",
-                "route53:ChangeResourceRecordSets",
-              ],
+              "Action": "route53:GetDNSSEC",
               "Effect": "Allow",
-              "Resource": Array [
-                Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "arn:",
-                      Object {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":route53:::hostedzone/OEIJGEOIJG2380JEF1",
-                    ],
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    "arn:",
+                    Object {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":route53:::hostedzone/OEIJGEOIJG2380JEF1",
                   ],
-                },
-                Object {
-                  "Fn::Join": Array [
-                    "",
-                    Array [
-                      "arn:",
-                      Object {
-                        "Ref": "AWS::Partition",
-                      },
-                      ":route53:::hostedzone/OEIJGEOIJG2380JEFO",
-                    ],
+                ],
+              },
+            },
+            Object {
+              "Action": "route53:ChangeResourceRecordSets",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    "arn:",
+                    Object {
+                      "Ref": "AWS::Partition",
+                    },
+                    ":route53:::hostedzone/OEIJGEOIJG2380JEFO",
                   ],
-                },
-              ],
+                ],
+              },
             },
           ],
           "Version": "2012-10-17",
