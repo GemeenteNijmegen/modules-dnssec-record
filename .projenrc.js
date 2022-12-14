@@ -18,6 +18,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
     '@aws-sdk/client-route-53',
     '@types/aws-lambda',
   ],
+  devDeps: [
+    'aws-sdk-client-mock',
+  ],
   packageName: projectName,
 });
 project.synth();
