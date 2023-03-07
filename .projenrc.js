@@ -1,26 +1,26 @@
-const { awscdk } = require('projen');
-const { NpmAccess } = require('projen/lib/javascript');
+const { GemeenteNijmegenCdkLib } = require('@gemeentenijmegen/projen-project-type');
 
 const projectName = '@gemeentenijmegen/dnssec-record';
 
-const project = new awscdk.AwsCdkConstructLibrary({
+const project = new GemeenteNijmegenCdkLib({
   cdkVersion: '2.1.0',
-  author: 'GemeenteNijmegen',
-  repository: 'github.com',
-  defaultReleaseBranch: 'main',
   name: projectName,
+  author: 'GemeenteNijmegen',
   defaultReleaseBranch: 'main',
-  license: 'EUPL-1.2',
-  release: true,
-  releaseToNpm: true,
-  npmAccess: NpmAccess.PUBLIC,
+  depsUpgradeOptions: {
+    workflowOptions: {
+      branches: ['main'], // No acceptance branche
+    },
+  },
   bundledDeps: [
     '@aws-sdk/client-route-53',
     '@types/aws-lambda',
   ],
   devDeps: [
     'aws-sdk-client-mock',
+    '@gemeentenijmegen/projen-project-type',
   ],
   packageName: projectName,
+  enableAutoMergeDependencies: false, // No acceptance branch
 });
 project.synth();
