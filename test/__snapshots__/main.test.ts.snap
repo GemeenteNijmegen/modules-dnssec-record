@@ -124,7 +124,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "04aae5aa9e9ed5e0aeefb4bbbfb82449ef35f3db68a98770c2e5cc4237666963.zip",
+          "S3Key": "2bf123abdb051720017138190e3d8e6f9c08fdd5da6c56273cfdea889341b2b1.zip",
         },
         "Description": "src/dnssec-record/dnssec-record.lambda.ts",
         "Environment": Object {

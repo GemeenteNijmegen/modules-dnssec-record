@@ -1,6 +1,10 @@
 {
   "dependencies": [
     {
+      "name": "@gemeentenijmegen/projen-project-type",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "version": "^27",
       "type": "build"
@@ -79,10 +83,6 @@
     },
     {
       "name": "jsii-pacmak",
-      "type": "build"
-    },
-    {
-      "name": "json-schema",
       "type": "build"
     },
     {

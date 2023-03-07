@@ -30,6 +30,11 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
+test-reports/junit.xml
+test/__snapshots__/*
+.env
+.vscode
+.DS_Store
 !/.projenrc.js
 /test-reports/
 junit.xml
@@ -52,3 +57,4 @@ tsconfig.json
 !/API.md
 /assets/
 !/src/dnssec-record/dnssec-record-function.ts
+!/.github/workflows/emergency.yml
