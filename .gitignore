@@ -35,7 +35,6 @@ test/__snapshots__/*
 .env
 .vscode
 .DS_Store
-!/.projenrc.js
 /test-reports/
 junit.xml
 /coverage/
@@ -45,7 +44,6 @@ junit.xml
 !/.github/workflows/release.yml
 !/.github/workflows/upgrade-main.yml
 !/.github/pull_request_template.md
-!/.npmrc
 !/test/
 !/tsconfig.dev.json
 !/src/
@@ -58,3 +56,4 @@ tsconfig.json
 /assets/
 !/src/dnssec-record/dnssec-record-function.ts
 !/.github/workflows/emergency.yml
+!/.projenrc.js
