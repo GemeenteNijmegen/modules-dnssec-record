@@ -55,7 +55,7 @@
       "description": "Create a JavaScript bundle from src/dnssec-record/dnssec-record.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/dnssec-record/dnssec-record.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/dnssec-record/dnssec-record.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/*"
+          "exec": "esbuild --bundle src/dnssec-record/dnssec-record.lambda.ts --target=\"node20\" --platform=\"node\" --outfile=\"assets/dnssec-record/dnssec-record.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/*"
         }
       ]
     },
@@ -64,7 +64,7 @@
       "description": "Continuously update the JavaScript bundle from src/dnssec-record/dnssec-record.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/dnssec-record/dnssec-record.lambda.ts --target=\"node18\" --platform=\"node\" --outfile=\"assets/dnssec-record/dnssec-record.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/* --watch"
+          "exec": "esbuild --bundle src/dnssec-record/dnssec-record.lambda.ts --target=\"node20\" --platform=\"node\" --outfile=\"assets/dnssec-record/dnssec-record.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/* --watch"
         }
       ]
     },
@@ -296,13 +296,13 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@gemeentenijmegen/projen-project-type,@types/jest,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,aws-sdk-client-mock,esbuild,eslint-import-resolver-typescript,eslint-plugin-import,eslint,jest-junit,jest,jsii-diff,jsii-docgen,jsii-pacmak,projen,standard-version,ts-jest,typescript,@aws-sdk/client-route-53,@types/aws-lambda,aws-cdk-lib,constructs"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@gemeentenijmegen/projen-project-type,aws-sdk-client-mock,esbuild,eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff,jsii-docgen,jsii-pacmak,jsii-rosetta,jsii,projen,typescript,@aws-sdk/client-route-53,@types/aws-lambda"
         },
         {
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @gemeentenijmegen/projen-project-type @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-client-mock esbuild eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak projen standard-version ts-jest typescript @aws-sdk/client-route-53 @types/aws-lambda aws-cdk-lib constructs"
+          "exec": "yarn upgrade @gemeentenijmegen/projen-project-type @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-client-mock esbuild eslint-import-resolver-typescript eslint-plugin-import eslint jest-junit jest jsii-diff jsii-docgen jsii-pacmak jsii-rosetta jsii projen standard-version ts-jest typescript @aws-sdk/client-route-53 @types/aws-lambda aws-cdk-lib constructs"
         },
         {
           "exec": "npx projen"
