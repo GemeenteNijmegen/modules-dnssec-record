@@ -36,7 +36,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@gemeentenijmegen/projen-project-type": "^1.5.4",
+    "@gemeentenijmegen/projen-project-type": "^1.5.6",
     "@types/jest": "^27",
     "@types/node": "^16 <= 16.18.78",
     "@typescript-eslint/eslint-plugin": "^6",
@@ -44,16 +44,16 @@
     "aws-cdk-lib": "2.1.0",
     "aws-sdk-client-mock": "^2.2.0",
     "constructs": "10.0.5",
-    "esbuild": "^0.20.0",
+    "esbuild": "^0.20.2",
     "eslint": "^8",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
     "jest": "^27",
     "jest-junit": "^15",
     "jsii": "1.x",
-    "jsii-diff": "^1.94.0",
+    "jsii-diff": "^1.96.0",
     "jsii-docgen": "^7.2.9",
-    "jsii-pacmak": "^1.94.0",
+    "jsii-pacmak": "^1.96.0",
     "jsii-rosetta": "1.x",
     "projen": "^0.79.9",
     "standard-version": "^9",
@@ -65,8 +65,8 @@
     "constructs": "^10.0.5"
   },
   "dependencies": {
-    "@aws-sdk/client-route-53": "^3.509.0",
-    "@types/aws-lambda": "^8.10.133"
+    "@aws-sdk/client-route-53": "^3.549.0",
+    "@types/aws-lambda": "^8.10.136"
   },
   "bundledDependencies": [
     "@aws-sdk/client-route-53",
