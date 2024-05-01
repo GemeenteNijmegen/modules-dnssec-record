@@ -1,19 +1,32 @@
 
 import {
-  Route53Client,
   GetDNSSECCommand,
   ChangeResourceRecordSetsCommand,
   GetChangeCommand,
   ChangeStatus,
   KeySigningKey,
+  Route53Client,
 } from '@aws-sdk/client-route-53';
+import { AssumeRoleCommand, STSClient } from '@aws-sdk/client-sts';
 
 export class DnssecRecordUtil {
 
-  private route53Client: Route53Client;
+  async getClient(assumeRoleArn?: string) {
+    // Do assume role if arn is provided
+    let creds: any = undefined;
+    if (assumeRoleArn) {
+      const sts = new STSClient();
+      const resp = await sts.send(new AssumeRoleCommand({
+        RoleArn: assumeRoleArn,
+        RoleSessionName: 'dnssec-record-construct',
+      }));
+      creds = resp.Credentials;
+    }
 
-  constructor(client: Route53Client) {
-    this.route53Client = client;
+    // Construct the client
+    return new Route53Client({
+      credentials: creds,
+    });
   }
 
   /**
@@ -22,12 +35,13 @@ export class DnssecRecordUtil {
    * @param hostedZoneId
    * @returns
    */
-  async getDsRecordValue(hostedZoneId: string, keySigningKeyName: string) {
+  async getDsRecordValue(hostedZoneId: string, keySigningKeyName: string, assumeRoleArn?: string) {
     // Obtain DNSSEC status from hosted zone
     const dnssecCommand = new GetDNSSECCommand({
       HostedZoneId: hostedZoneId,
     });
-    const dnssecInfo = await this.route53Client.send(dnssecCommand);
+    const client = await this.getClient(assumeRoleArn);
+    const dnssecInfo = await client.send(dnssecCommand);
 
     // Find the key signing key by name
     const keySigningKey = dnssecInfo.KeySigningKeys?.find((k: KeySigningKey) => k.Name == keySigningKeyName && k.Status == 'ACTIVE');
@@ -52,7 +66,7 @@ export class DnssecRecordUtil {
    * @param dsRecordName
    * @param dsRecordValue
    */
-  async createDsRecord(parentHostedZoneId: string, dsRecordName: string, dsRecordValue: string) {
+  async createDsRecord(parentHostedZoneId: string, dsRecordName: string, dsRecordValue: string, assumeRoleArn?: string) {
     const createRecordCommand = new ChangeResourceRecordSetsCommand({
       HostedZoneId: parentHostedZoneId, // DS is in parent hosted zone!
       ChangeBatch: {
@@ -72,7 +86,9 @@ export class DnssecRecordUtil {
         ],
       },
     });
-    const createRecordResult = await this.route53Client.send(createRecordCommand);
+
+    const client = await this.getClient(assumeRoleArn);
+    const createRecordResult = await client.send(createRecordCommand);
 
     const changeId = createRecordResult.ChangeInfo?.Id;
     if (!changeId) {
@@ -90,7 +106,7 @@ export class DnssecRecordUtil {
    * @param intervalMilis
    * @returns
    */
-  async waitForChange(changeId: string, maxRetries: number, intervalMilis: number) {
+  async waitForChange(changeId: string, maxRetries: number, intervalMilis: number, assumeRoleArn?: string) {
 
     let retries = 0;
     while (retries <= maxRetries) {
@@ -100,7 +116,9 @@ export class DnssecRecordUtil {
       const changeStatusCommand = new GetChangeCommand({
         Id: changeId,
       });
-      const status = await this.route53Client.send(changeStatusCommand);
+
+      const client = await this.getClient(assumeRoleArn);
+      const status = await client.send(changeStatusCommand);
 
       if (status.ChangeInfo?.Status == ChangeStatus.INSYNC) {
         return true;
