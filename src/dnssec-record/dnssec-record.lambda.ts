@@ -1,11 +1,9 @@
-import { Route53Client } from '@aws-sdk/client-route-53';
 import {
   CloudFormationCustomResourceEvent,
   CloudFormationCustomResourceResponse,
 } from 'aws-lambda';
 import { DnssecRecordUtil } from './dnssec-record-util';
 
-const route53Client = new Route53Client({});
 
 /**
  * Entry point of the custom resource
@@ -27,19 +25,20 @@ async function onCreateUpdate(
   const hostedZoneId = event.ResourceProperties.hostedZoneId;
   const hostedZoneName = event.ResourceProperties.hostedZoneName;
   const parentHostedZoneId = event.ResourceProperties.parentHostedZoneId;
+  const roleToAssume = event.ResourceProperties.roleToAssume;
 
   console.info('KeySigningKey name:', keySigningKeyName);
   console.info('Hosted zone ID:', hostedZoneId);
   console.info('Hosted zone name:', hostedZoneName);
   console.info('Parent hosted zone ID:', parentHostedZoneId);
 
-  const util = new DnssecRecordUtil(route53Client);
+  const util = new DnssecRecordUtil();
 
   try {
 
     const dsRecordValue = await util.getDsRecordValue(hostedZoneId, keySigningKeyName);
     console.info('Obtained DS record value', dsRecordValue);
-    const changeId = await util.createDsRecord(parentHostedZoneId, hostedZoneName, dsRecordValue);
+    const changeId = await util.createDsRecord(parentHostedZoneId, hostedZoneName, dsRecordValue, roleToAssume);
     console.info('UPSERT DS record succesfull, change ID is', changeId);
     const successful = await util.waitForChange(changeId, 2, 3000);
 

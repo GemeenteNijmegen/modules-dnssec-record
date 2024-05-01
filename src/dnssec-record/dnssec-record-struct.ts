@@ -14,6 +14,11 @@ export interface DnssecRecordStructProps {
   readonly keySigningKey: route53.CfnKeySigningKey;
   readonly hostedZone: route53.IHostedZone;
   readonly parentHostedZone: route53.IHostedZone;
+  /**
+   * Set a role to assume for creating the DNSSEC record
+   * Can be used for cross account DS record creation.
+   */
+  readonly roleToAssume?: string;
 }
 
 export class DnssecRecordStruct extends Construct {
@@ -69,6 +74,7 @@ export class DnssecRecordStruct extends Construct {
         hostedZoneId: props.hostedZone.hostedZoneId,
         hostedZoneName: props.hostedZone.zoneName,
         parentHostedZoneId: props.parentHostedZone.hostedZoneId,
+        roleToAssume: props.roleToAssume,
       },
     });
 

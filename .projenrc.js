@@ -14,6 +14,7 @@ const project = new GemeenteNijmegenCdkLib({
   },
   bundledDeps: [
     '@aws-sdk/client-route-53',
+    '@aws-sdk/client-sts',
     '@types/aws-lambda',
   ],
   devDeps: [

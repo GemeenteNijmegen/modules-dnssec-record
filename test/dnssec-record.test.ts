@@ -21,7 +21,6 @@ test('get-ds-record', async () => {
   const kskName = 'ksk_name_';
   const dsRecord = '120948 12 120942fjewoihgfeo3280r390';
 
-  const route53Client = new Route53Client({});
   const dnssecInfo: Partial<GetDNSSECCommandOutput> = {
     KeySigningKeys: [
       {
@@ -38,7 +37,7 @@ test('get-ds-record', async () => {
   };
   route53Mock.on(GetDNSSECCommand).resolves(dnssecInfo);
 
-  const util = new DnssecRecordUtil(route53Client);
+  const util = new DnssecRecordUtil();
 
   // Happy flow
   const dsRecordValue = await util.getDsRecordValue(hostedZoneId, `${kskName}2`);
@@ -61,7 +60,6 @@ test('set-ds-record', async () => {
 
   const changeId = 'change/0239480192r2';
 
-  const route53Client = new Route53Client({});
   const createDsRecordIn: Partial<ChangeResourceRecordSetsCommandInput> = {
     HostedZoneId: hostedZoneId,
     ChangeBatch: {
@@ -96,7 +94,7 @@ test('set-ds-record', async () => {
     },
   };
 
-  const util = new DnssecRecordUtil(route53Client);
+  const util = new DnssecRecordUtil();
 
   route53Mock.on(ChangeResourceRecordSetsCommand, createDsRecordIn, true).resolves(createDsRecordOut);
   await expect(util.createDsRecord(hostedZoneId, dsRecordName, dsRecordValue)).resolves.toBe(changeId);

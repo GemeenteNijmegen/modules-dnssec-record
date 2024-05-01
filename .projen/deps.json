@@ -100,6 +100,10 @@
       "type": "bundled"
     },
     {
+      "name": "@aws-sdk/client-sts",
+      "type": "bundled"
+    },
+    {
       "name": "@types/aws-lambda",
       "type": "bundled"
     },

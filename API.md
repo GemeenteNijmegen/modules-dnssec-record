@@ -153,6 +153,7 @@ const dnssecRecordStructProps: DnssecRecordStructProps = { ... }
 | <code><a href="#@gemeentenijmegen/dnssec-record.DnssecRecordStructProps.property.hostedZone">hostedZone</a></code> | <code>aws-cdk-lib.aws_route53.IHostedZone</code> | *No description.* |
 | <code><a href="#@gemeentenijmegen/dnssec-record.DnssecRecordStructProps.property.keySigningKey">keySigningKey</a></code> | <code>aws-cdk-lib.aws_route53.CfnKeySigningKey</code> | *No description.* |
 | <code><a href="#@gemeentenijmegen/dnssec-record.DnssecRecordStructProps.property.parentHostedZone">parentHostedZone</a></code> | <code>aws-cdk-lib.aws_route53.IHostedZone</code> | *No description.* |
+| <code><a href="#@gemeentenijmegen/dnssec-record.DnssecRecordStructProps.property.roleToAssume">roleToAssume</a></code> | <code>string</code> | Set a role to assume for creating the DNSSEC record Can be used for cross account DS record creation. |
 
 ---
 
@@ -183,6 +184,18 @@ public readonly parentHostedZone: IHostedZone;
 ```
 
 - *Type:* aws-cdk-lib.aws_route53.IHostedZone
+
+---
+
+##### `roleToAssume`<sup>Optional</sup> <a name="roleToAssume" id="@gemeentenijmegen/dnssec-record.DnssecRecordStructProps.property.roleToAssume"></a>
+
+```typescript
+public readonly roleToAssume: string;
+```
+
+- *Type:* string
+
+Set a role to assume for creating the DNSSEC record Can be used for cross account DS record creation.
 
 ---
 
