@@ -13,19 +13,19 @@ export class DnssecRecordUtil {
 
   async getClient(assumeRoleArn?: string) {
     // Do assume role if arn is provided
-    let creds: any = undefined;
+    let credentials: any = undefined;
     if (assumeRoleArn) {
       const sts = new STSClient();
-      const resp = await sts.send(new AssumeRoleCommand({
+      const response = await sts.send(new AssumeRoleCommand({
         RoleArn: assumeRoleArn,
         RoleSessionName: 'dnssec-record-construct',
       }));
-      creds = resp.Credentials;
+      credentials = response.Credentials;
     }
 
     // Construct the client
     return new Route53Client({
-      credentials: creds,
+      credentials,
     });
   }
 
