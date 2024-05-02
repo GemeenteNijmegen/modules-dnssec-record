@@ -6,6 +6,7 @@ import {
   custom_resources as customresource,
   aws_logs as logs,
 } from 'aws-cdk-lib';
+import { Effect } from 'aws-cdk-lib/aws-iam';
 import { Construct } from 'constructs';
 import { DnssecRecordFunction } from './dnssec-record-function';
 
@@ -28,6 +29,7 @@ export class DnssecRecordStruct extends Construct {
     super(scope, id);
 
     const lambda = new DnssecRecordFunction(this, 'lambda', {
+      description: 'Custom resource to create a DNSSEC record in the parten hotstedzone',
       timeout: Duration.seconds(60),
     });
 
@@ -61,6 +63,14 @@ export class DnssecRecordStruct extends Construct {
         props.parentHostedZone.hostedZoneArn,
       ],
     }));
+
+    if (props.roleToAssume) {
+      lambda.addToRolePolicy(new iam.PolicyStatement({
+        actions: ['sts:AssumeRole'],
+        effect: Effect.ALLOW,
+        resources: [props.roleToAssume],
+      }));
+    }
 
     const customResourceProvider = new customresource.Provider(this, 'provider', {
       onEventHandler: lambda,
