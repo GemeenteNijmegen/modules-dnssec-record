@@ -10,7 +10,6 @@ const project = new GemeenteNijmegenCdkLib({
   defaultReleaseBranch: 'main',
   depsUpgradeOptions: {
     workflowOptions: {
-      labels: ['auto-merge'],
       branches: ['main'], // No acceptance branche
     },
   },
