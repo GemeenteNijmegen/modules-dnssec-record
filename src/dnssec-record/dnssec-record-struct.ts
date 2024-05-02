@@ -29,6 +29,7 @@ export class DnssecRecordStruct extends Construct {
     super(scope, id);
 
     const lambda = new DnssecRecordFunction(this, 'lambda', {
+      description: 'Custom resource to create a DNSSEC record in the parten hotstedzone',
       timeout: Duration.seconds(60),
     });
 
