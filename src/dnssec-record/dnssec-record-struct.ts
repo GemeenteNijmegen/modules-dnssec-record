@@ -20,6 +20,12 @@ export interface DnssecRecordStructProps {
    * Can be used for cross account DS record creation.
    */
   readonly roleToAssume?: string;
+
+  /**
+   * Force update
+   * Pass a random string to trigger an update in this custom resource
+   */
+  readonly forceUpdate?: string;
 }
 
 export class DnssecRecordStruct extends Construct {
@@ -29,7 +35,7 @@ export class DnssecRecordStruct extends Construct {
     super(scope, id);
 
     const lambda = new DnssecRecordFunction(this, 'lambda', {
-      description: 'Custom resource to create a DNSSEC record in the parten hotstedzone',
+      description: 'Custom resource to create a DNSSEC record in the parent hotstedzone',
       timeout: Duration.seconds(60),
     });
 
@@ -85,6 +91,7 @@ export class DnssecRecordStruct extends Construct {
         hostedZoneName: props.hostedZone.zoneName,
         parentHostedZoneId: props.parentHostedZone.hostedZoneId,
         roleToAssume: props.roleToAssume,
+        forceUpdate: props.forceUpdate,
       },
     });
 

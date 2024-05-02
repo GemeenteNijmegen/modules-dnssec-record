@@ -126,7 +126,7 @@ Object {
           },
           "S3Key": "ee33802eca23f9d3f34026d0a8a6a0fc87e099e8119b4213578f117b2e32e6c4.zip",
         },
-        "Description": "Custom resource to create a DNSSEC record in the parten hotstedzone",
+        "Description": "Custom resource to create a DNSSEC record in the parent hotstedzone",
         "Environment": Object {
           "Variables": Object {
             "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",

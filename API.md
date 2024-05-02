@@ -153,6 +153,7 @@ const dnssecRecordStructProps: DnssecRecordStructProps = { ... }
 | <code><a href="#@gemeentenijmegen/dnssec-record.DnssecRecordStructProps.property.hostedZone">hostedZone</a></code> | <code>aws-cdk-lib.aws_route53.IHostedZone</code> | *No description.* |
 | <code><a href="#@gemeentenijmegen/dnssec-record.DnssecRecordStructProps.property.keySigningKey">keySigningKey</a></code> | <code>aws-cdk-lib.aws_route53.CfnKeySigningKey</code> | *No description.* |
 | <code><a href="#@gemeentenijmegen/dnssec-record.DnssecRecordStructProps.property.parentHostedZone">parentHostedZone</a></code> | <code>aws-cdk-lib.aws_route53.IHostedZone</code> | *No description.* |
+| <code><a href="#@gemeentenijmegen/dnssec-record.DnssecRecordStructProps.property.forceUpdate">forceUpdate</a></code> | <code>string</code> | Force update Pass a random string to trigger an update in this custom resource. |
 | <code><a href="#@gemeentenijmegen/dnssec-record.DnssecRecordStructProps.property.roleToAssume">roleToAssume</a></code> | <code>string</code> | Set a role to assume for creating the DNSSEC record Can be used for cross account DS record creation. |
 
 ---
@@ -184,6 +185,18 @@ public readonly parentHostedZone: IHostedZone;
 ```
 
 - *Type:* aws-cdk-lib.aws_route53.IHostedZone
+
+---
+
+##### `forceUpdate`<sup>Optional</sup> <a name="forceUpdate" id="@gemeentenijmegen/dnssec-record.DnssecRecordStructProps.property.forceUpdate"></a>
+
+```typescript
+public readonly forceUpdate: string;
+```
+
+- *Type:* string
+
+Force update Pass a random string to trigger an update in this custom resource.
 
 ---
 
