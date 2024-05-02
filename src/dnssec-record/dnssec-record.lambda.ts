@@ -9,6 +9,7 @@ import { DnssecRecordUtil } from './dnssec-record-util';
  * Entry point of the custom resource
  */
 exports.handler = async (event: CloudFormationCustomResourceEvent): Promise<CloudFormationCustomResourceResponse> => {
+  console.log(JSON.stringify(event));
   switch (event.RequestType) {
     case 'Create': return onCreateUpdate(event);
     case 'Update': return onCreateUpdate(event);
@@ -31,6 +32,7 @@ async function onCreateUpdate(
   console.info('Hosted zone ID:', hostedZoneId);
   console.info('Hosted zone name:', hostedZoneName);
   console.info('Parent hosted zone ID:', parentHostedZoneId);
+  console.info('DS record creation role:', roleToAssume);
 
   const util = new DnssecRecordUtil();
 

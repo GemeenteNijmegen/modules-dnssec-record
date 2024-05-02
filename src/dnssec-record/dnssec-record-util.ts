@@ -22,6 +22,7 @@ export class DnssecRecordUtil {
       if (!response.Credentials) {
         throw Error('Could not obtain credentials');
       }
+      console.log('assumed role', response.Credentials.AccessKeyId);
       // Construct the client
       // Explicit assign, see https://github.com/aws/aws-sdk-js-v3/issues/3940
       return new Route53Client({
