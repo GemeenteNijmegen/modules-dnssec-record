@@ -13,20 +13,27 @@ export class DnssecRecordUtil {
 
   async getClient(assumeRoleArn?: string) {
     // Do assume role if arn is provided
-    let credentials: any = undefined;
     if (assumeRoleArn) {
       const sts = new STSClient();
       const response = await sts.send(new AssumeRoleCommand({
         RoleArn: assumeRoleArn,
         RoleSessionName: 'dnssec-record-construct',
       }));
-      credentials = response.Credentials;
+      if (!response.Credentials) {
+        throw Error('Could not obtain credentials');
+      }
+      // Construct the client
+      // Explicit assign, see https://github.com/aws/aws-sdk-js-v3/issues/3940
+      return new Route53Client({
+        credentials: {
+          accessKeyId: response.Credentials.AccessKeyId!,
+          secretAccessKey: response.Credentials.SecretAccessKey!,
+          sessionToken: response.Credentials.SessionToken!,
+        },
+      });
     }
 
-    // Construct the client
-    return new Route53Client({
-      credentials,
-    });
+    return new Route53Client();
   }
 
   /**
