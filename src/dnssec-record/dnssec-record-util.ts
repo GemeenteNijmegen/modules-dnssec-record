@@ -116,6 +116,8 @@ export class DnssecRecordUtil {
    */
   async waitForChange(changeId: string, maxRetries: number, intervalMilis: number, assumeRoleArn?: string) {
 
+    const client = await this.getClient(assumeRoleArn);
+
     let retries = 0;
     while (retries <= maxRetries) {
       retries++;
@@ -125,7 +127,6 @@ export class DnssecRecordUtil {
         Id: changeId,
       });
 
-      const client = await this.getClient(assumeRoleArn);
       const status = await client.send(changeStatusCommand);
 
       if (status.ChangeInfo?.Status == ChangeStatus.INSYNC) {
