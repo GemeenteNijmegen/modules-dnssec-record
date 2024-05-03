@@ -124,7 +124,7 @@ Object {
           "S3Bucket": Object {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "7f69b48f586ddf254b3d38c63139f440a38d975d7d4fa143536b160c615390ba.zip",
+          "S3Key": "4680e4fad2a57a131610a2d4bd4992aed8c534e81b68fc7c5fefd497740ea6b1.zip",
         },
         "Description": "Custom resource to create a DNSSEC record in the parent hotstedzone",
         "Environment": Object {
