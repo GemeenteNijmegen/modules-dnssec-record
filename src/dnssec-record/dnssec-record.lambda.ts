@@ -42,7 +42,7 @@ async function onCreateUpdate(
     console.info('Obtained DS record value', dsRecordValue);
     const changeId = await util.createDsRecord(parentHostedZoneId, hostedZoneName, dsRecordValue, roleToAssume);
     console.info('UPSERT DS record succesfull, change ID is', changeId);
-    const successful = await util.waitForChange(changeId, 2, 3000);
+    const successful = await util.waitForChange(changeId, 2, 3000, roleToAssume);
 
     if (successful) {
       console.info('Record is INSYNC');
