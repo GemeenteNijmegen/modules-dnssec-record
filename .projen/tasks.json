@@ -296,7 +296,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@gemeentenijmegen/projen-project-type,aws-sdk-client-mock,esbuild,eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff,jsii-docgen,jsii-pacmak,jsii-rosetta,jsii,projen,typescript,@aws-sdk/client-route-53,@aws-sdk/client-sts,@types/aws-lambda"
+          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@gemeentenijmegen/projen-project-type,aws-sdk-client-mock,esbuild,eslint-import-resolver-typescript,eslint-plugin-import,jsii-diff,jsii-docgen,jsii-pacmak,projen,typescript,@aws-sdk/client-route-53,@aws-sdk/client-sts,@types/aws-lambda"
         },
         {
           "exec": "yarn install --check-files"
