@@ -36,7 +36,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@gemeentenijmegen/projen-project-type": "^1.7.1",
+    "@gemeentenijmegen/projen-project-type": "^1.7.3",
     "@types/jest": "^27",
     "@types/node": "^16 <= 16.18.78",
     "@typescript-eslint/eslint-plugin": "^6",
@@ -44,7 +44,7 @@
     "aws-cdk-lib": "2.1.0",
     "aws-sdk-client-mock": "^2.2.0",
     "constructs": "10.0.5",
-    "esbuild": "^0.22.0",
+    "esbuild": "^0.23.0",
     "eslint": "^8",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
@@ -65,9 +65,9 @@
     "constructs": "^10.0.5"
   },
   "dependencies": {
-    "@aws-sdk/client-route-53": "^3.606.0",
-    "@aws-sdk/client-sts": "^3.606.0",
-    "@types/aws-lambda": "^8.10.140"
+    "@aws-sdk/client-route-53": "^3.620.0",
+    "@aws-sdk/client-sts": "^3.620.0",
+    "@types/aws-lambda": "^8.10.142"
   },
   "bundledDependencies": [
     "@aws-sdk/client-route-53",
