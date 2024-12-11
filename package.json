@@ -66,8 +66,8 @@
     "constructs": "^10.0.5"
   },
   "dependencies": {
-    "@aws-sdk/client-route-53": "^3.699.0",
-    "@aws-sdk/client-sts": "^3.699.0",
+    "@aws-sdk/client-route-53": "^3.709.0",
+    "@aws-sdk/client-sts": "^3.709.0",
     "@types/aws-lambda": "^8.10.146"
   },
   "bundledDependencies": [
