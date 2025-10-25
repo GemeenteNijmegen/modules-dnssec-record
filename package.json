@@ -57,7 +57,7 @@
     "jsii-docgen": "^10.5.0",
     "jsii-pacmak": "^1.117.0",
     "jsii-rosetta": "~5.8.0",
-    "projen": "^0.96.5",
+    "projen": "^0.98.4",
     "ts-jest": "^27",
     "typescript": "^4.9.5"
   },
@@ -66,8 +66,8 @@
     "constructs": "^10.0.5"
   },
   "dependencies": {
-    "@aws-sdk/client-route-53": "^3.915.0",
-    "@aws-sdk/client-sts": "^3.914.0",
+    "@aws-sdk/client-route-53": "^3.917.0",
+    "@aws-sdk/client-sts": "^3.917.0",
     "@types/aws-lambda": "^8.10.156"
   },
   "bundledDependencies": [
