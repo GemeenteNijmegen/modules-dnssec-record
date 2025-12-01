@@ -56,7 +56,7 @@
       "description": "Create a JavaScript bundle from src/dnssec-record/dnssec-record.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/dnssec-record/dnssec-record.lambda.ts --target=\"node22\" --platform=\"node\" --outfile=\"assets/dnssec-record/dnssec-record.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/*"
+          "exec": "esbuild --bundle src/dnssec-record/dnssec-record.lambda.ts --target=\"node24\" --platform=\"node\" --outfile=\"assets/dnssec-record/dnssec-record.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/*"
         }
       ]
     },
@@ -65,7 +65,7 @@
       "description": "Continuously update the JavaScript bundle from src/dnssec-record/dnssec-record.lambda.ts",
       "steps": [
         {
-          "exec": "esbuild --bundle src/dnssec-record/dnssec-record.lambda.ts --target=\"node22\" --platform=\"node\" --outfile=\"assets/dnssec-record/dnssec-record.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/* --watch"
+          "exec": "esbuild --bundle src/dnssec-record/dnssec-record.lambda.ts --target=\"node24\" --platform=\"node\" --outfile=\"assets/dnssec-record/dnssec-record.lambda/index.js\" --tsconfig=\"tsconfig.dev.json\" --external:@aws-sdk/* --watch"
         }
       ]
     },
@@ -307,7 +307,7 @@
       },
       "steps": [
         {
-          "exec": "npx npm-check-updates@16 --upgrade --target=minor --peer --no-deprecated --dep=dev,peer,prod,optional --filter=@gemeentenijmegen/projen-project-type,@types/jest,@types/node,aws-sdk-client-mock,esbuild,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,jsii-pacmak,projen,ts-jest,typescript,@aws-sdk/client-route-53,@aws-sdk/client-sts,@types/aws-lambda"
+          "exec": "npx npm-check-updates@18 --upgrade --target=minor --peer --no-deprecated --dep=dev,peer,prod,optional --filter=@gemeentenijmegen/projen-project-type,@types/jest,@types/node,aws-sdk-client-mock,esbuild,eslint-import-resolver-typescript,eslint-plugin-import,jest,jsii-diff,jsii-pacmak,projen,ts-jest,typescript,@aws-sdk/client-route-53,@aws-sdk/client-sts,@types/aws-lambda"
         },
         {
           "exec": "yarn install --check-files"
