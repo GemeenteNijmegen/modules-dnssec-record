@@ -56,4 +56,5 @@ tsconfig.json
 /assets/
 !/src/dnssec-record/dnssec-record-function.ts
 !/.github/workflows/emergency.yml
+!/.nvmrc
 !/.projenrc.js
