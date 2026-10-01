@@ -33,7 +33,7 @@
     },
     {
       "name": "commit-and-tag-version",
-      "version": "^12",
+      "version": "^13",
       "type": "build"
     },
     {
@@ -120,7 +120,7 @@
     },
     {
       "name": "constructs",
-      "version": "^10.6.0",
+      "version": "^10.8.1",
       "type": "peer"
     }
   ],

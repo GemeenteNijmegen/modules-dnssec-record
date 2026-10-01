@@ -5,7 +5,7 @@ const projectName = '@gemeentenijmegen/dnssec-record';
 const project = new GemeenteNijmegenCdkLib({
   projenrcTs: true,
   cdkVersion: '2.253.0',
-  constructsVersion: '10.6.0',
+  constructsVersion: '10.8.1',
   name: projectName,
   repository: 'https://github.com/GemeenteNijmegen/modules-dnssec-record',
   repositoryUrl: 'git://github.com/GemeenteNijmegen/modules-dnssec-record',

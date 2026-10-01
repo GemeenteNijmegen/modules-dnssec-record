@@ -7,6 +7,7 @@
   "scripts": {
     "build": "projen build",
     "bump": "projen bump",
+    "bump:releasable-commits": "projen bump:releasable-commits",
     "bundle": "projen bundle",
     "bundle:dnssec-record/dnssec-record.lambda": "projen bundle:dnssec-record/dnssec-record.lambda",
     "bundle:dnssec-record/dnssec-record.lambda:watch": "projen bundle:dnssec-record/dnssec-record.lambda:watch",
@@ -37,7 +38,7 @@
     "organization": false
   },
   "devDependencies": {
-    "@gemeentenijmegen/projen-project-type": "^1.14.0",
+    "@gemeentenijmegen/projen-project-type": "^1.16.2",
     "@stylistic/eslint-plugin": "^2",
     "@types/jest": "^27",
     "@types/node": "^16 <= 16.18.78",
@@ -45,32 +46,32 @@
     "@typescript-eslint/parser": "^8",
     "aws-cdk-lib": "2.253.0",
     "aws-sdk-client-mock": "^2.2.0",
-    "commit-and-tag-version": "^12",
-    "constructs": "10.6.0",
-    "esbuild": "^0.28.1",
+    "commit-and-tag-version": "^13",
+    "constructs": "10.8.1",
+    "esbuild": "^0.28.2",
     "eslint": "^9",
     "eslint-import-resolver-typescript": "^3.10.1",
     "eslint-plugin-import": "^2.32.0",
     "jest": "^27",
     "jest-junit": "^17",
     "jsii": "~5.9.0",
-    "jsii-diff": "^1.138.0",
+    "jsii-diff": "^1.140.0",
     "jsii-docgen": "^10.5.0",
-    "jsii-pacmak": "^1.138.0",
+    "jsii-pacmak": "^1.140.0",
     "jsii-rosetta": "~5.9.0",
-    "projen": "^0.101.11",
+    "projen": "^0.103.27",
     "ts-jest": "^27",
     "ts-node": "^10.9.2",
     "typescript": "^4.9.5"
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.253.0",
-    "constructs": "^10.6.0"
+    "constructs": "^10.8.1"
   },
   "dependencies": {
-    "@aws-sdk/client-route-53": "^3.1086.0",
-    "@aws-sdk/client-sts": "^3.1086.0",
-    "@types/aws-lambda": "^8.10.162"
+    "@aws-sdk/client-route-53": "^3.1144.0",
+    "@aws-sdk/client-sts": "^3.1144.0",
+    "@types/aws-lambda": "^8.10.164"
   },
   "bundledDependencies": [
     "@aws-sdk/client-route-53",
